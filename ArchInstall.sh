@@ -52,7 +52,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
 # Настройка региона
-ln -sf /usr/shaere/zoneinfo/Europe/Moscow
+ln -sf /usr/share/zoneinfo/Europe/Moscow
 
 # Настройка часов
 hwclock --systohc
