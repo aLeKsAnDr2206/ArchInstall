@@ -19,24 +19,24 @@ echo
 
 	# Меняем тип раздела подкачки на Linux SWAP
 	echo t;
-	echo 6;
+	echo 2;
 	echo 19;
 
 	# Сохраняем изменения 
 	echo w;
-) | fdisk /dev/nvme0n1
+) | fdisk /dev/sda
 
 echo 'Разметка диска'
 fdisk -l
 
 # Форматированиие дисков
 
-mkswap /dev/nvme0n1p6
-swapon /dev/nvme0n1p6
-mkfs.ext4 /dev/nvme0n1p7
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
 
 # Монтирование дисков
-mount /dev/nvme0n1p7 /mnt
+mount /dev/sda3 /mnt
 
 # Обновление ключей
 pacman -Syy
@@ -100,7 +100,6 @@ lsblk
 echo "\"Boot with minimal options\"   \"ro root=UUID=9ce61738-4be1-8f05-5acacf852090\"" > /boot/refind-linux.conf
 cat /boot/refind-linux.conf
 
-exit
 
 
 
